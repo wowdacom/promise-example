@@ -1,3 +1,15 @@
 'use strict';
 
-setTimeout(()=>console.log('TIMED OUT!'), 300);
+require('es6-promise')
+
+var os = require('os');
+os.tmpDir = os.tmpdir;
+
+var promise = new Promise((fulfill, reject)=>{
+  setTimeout(fulfill, 300, 'FULFILLED!')
+})
+
+promise.then((value)=>{
+  console.log(value)
+})
+
