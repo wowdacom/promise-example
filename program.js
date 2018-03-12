@@ -1,15 +1,31 @@
-'use strict';
 
-require('es6-promise')
+  'use strict';
 
-var os = require('os');
-os.tmpDir = os.tmpdir;
+      var promise = new Promise(function (fulfill, reject) {
+          fulfill('I FIRED')
+          reject(new Error('I DID NOT FIRE'));
+      });
 
-var promise = new Promise((fulfill, reject)=>{
-  setTimeout(fulfill, 300, 'FULFILLED!')
-})
+      function onRejected(error) {
+        return console.log(error.message);
+      }
 
-promise.then((value)=>{
-  console.log(value)
-})
+      promise.then(console.log, onRejected)
 
+
+// (function() {
+//   'use strict';
+//   var onRejected, promise;
+//
+//   promise = new Promise(function(fulfill, reject) {
+//     fulfill('I FIRED');
+//     return reject(new Error('I DID NOT FIRE'));
+//   });
+//
+//   onRejected = function(error) {
+//     return console.log(error.message);
+//   };
+//
+//   promise.then(console.log, onRejected);
+//
+// }).call(this);
