@@ -49,3 +49,17 @@
 //         }
 //       }, 1000);
 //     });
+
+
+//Promise 兩種寫法比較
+// promise.then(null, function (err) {
+//   console.error('THERE IS AN ERROR!!!');
+//   console.error(err.message);
+// });
+//
+// You could simply write
+//
+// promise.catch(function (err) {
+//   console.error('THERE IS AN ERROR!!!');
+//   console.error(err.message);
+// });
